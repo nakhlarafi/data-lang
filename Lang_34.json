@@ -1,0 +1,1445 @@
+{
+    "bug_id": 34,
+    "tests": [
+        {
+            "test_name": "testReflectionShortArray",
+            "test_body": "public void testReflectionShortArray() {\nshort[] array = new short[] { 1, 2, -3, 4 };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1,2,-3,4}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionLongArray",
+            "test_body": "public void testReflectionLongArray() {\nlong[] array = new long[] { 1, 2, -3, 4 };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1,2,-3,4}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionCharArray",
+            "test_body": "public void testReflectionCharArray() {\nchar[] array = new char[] { 'A', '2', '_', 'D' };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{A,2,_,D}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testSelfInstanceTwoVarsReflectionObjectCycle",
+            "test_body": "public void testSelfInstanceTwoVarsReflectionObjectCycle() throws Exception {\nSelfInstanceTwoVarsReflectionTestFixture test = new SelfInstanceTwoVarsReflectionTestFixture();\nassertEquals(this.toBaseString(test) + \"[typeIsSelf=\" + this.toBaseString(test) + \",otherType=\" + test.getOtherType().toString() + \"]\", test.toString());\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionIntArray",
+            "test_body": "public void testReflectionIntArray() {\nint[] array = new int[] { 1, 2, -3, 4 };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1,2,-3,4}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionHierarchy",
+            "test_body": "public void testReflectionHierarchy() {\nReflectionTestFixtureA baseA = new ReflectionTestFixtureA();\nString baseStr = this.toBaseString(baseA);\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA));\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA, null));\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA, null, false));\nassertEquals(baseStr + \"[a=a,transientA=t]\", ToStringBuilder.reflectionToString(baseA, null, true));\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA, null, false, null));\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA, null, false, Object.class));\nassertEquals(baseStr + \"[a=a]\", ToStringBuilder.reflectionToString(baseA, null, false, ReflectionTestFixtureA.class));\nReflectionTestFixtureB baseB = new ReflectionTestFixtureB();\nbaseStr = this.toBaseString(baseB);\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB, null));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB, null, false));\nassertEquals(baseStr + \"[b=b,transientB=t,a=a,transientA=t]\", ToStringBuilder.reflectionToString(baseB, null, true));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB, null, false, null));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB, null, false, Object.class));\nassertEquals(baseStr + \"[b=b,a=a]\", ToStringBuilder.reflectionToString(baseB, null, false, ReflectionTestFixtureA.class));\nassertEquals(baseStr + \"[b=b]\", ToStringBuilder.reflectionToString(baseB, null, false, ReflectionTestFixtureB.class));\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionObjectArray",
+            "test_body": "public void testReflectionObjectArray() {\nObject[] array = new Object[] { null, base, new int[] { 3, 6 } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{<null>,5,{3,6}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionFloatArray",
+            "test_body": "public void testReflectionFloatArray() {\nfloat[] array = new float[] { 1.0f, 2.9876f, -3.00001f, 4.3f };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1.0,2.9876,-3.00001,4.3}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionObjectCycle",
+            "test_body": "public void testReflectionObjectCycle() throws Exception {\nReflectionTestCycleA a = new ReflectionTestCycleA();\nReflectionTestCycleB b = new ReflectionTestCycleB();\na.b = b;\nb.a = a;\nassertEquals(\nthis.toBaseString(a) + \"[b=\" + this.toBaseString(b) + \"[a=\" + this.toBaseString(a) + \"]]\",\na.toString());\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionyteArray",
+            "test_body": "public void testReflectionyteArray() {\nbyte[] array = new byte[] { 1, 2, -3, 4 };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1,2,-3,4}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionBooleanArray",
+            "test_body": "public void testReflectionBooleanArray() {\nboolean[] array = new boolean[] { true, false, false };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{true,false,false}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionArrayAndObjectCycle",
+            "test_body": "public void testReflectionArrayAndObjectCycle() throws Exception {\nObject[] objects = new Object[1];\nSimpleReflectionTestFixture simple = new SimpleReflectionTestFixture(objects);\nobjects[0] = simple;\nassertEquals(\nthis.toBaseString(objects)\n+ \"[{\"\n+ this.toBaseString(simple)\n+ \"[o=\"\n+ this.toBaseString(objects)\n+ \"]\"\n+ \"}]\",\nToStringBuilder.reflectionToString(objects));\nassertEquals(\nthis.toBaseString(simple)\n+ \"[o={\"\n+ this.toBaseString(simple)\n+ \"}]\",\nToStringBuilder.reflectionToString(simple));\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionDoubleArray",
+            "test_body": "public void testReflectionDoubleArray() {\ndouble[] array = new double[] { 1.0, 2.9876, -3.00001, 4.3 };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{1.0,2.9876,-3.00001,4.3}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testObjectCycle",
+            "test_body": "public void testObjectCycle() {\nObjectCycle a = new ObjectCycle();\nObjectCycle b = new ObjectCycle();\na.obj = b;\nb.obj = a;\nString expected = toBaseString(a) + \"[\" + toBaseString(b) + \"[\" + toBaseString(a) + \"]]\";\nassertEquals(expected, a.toString());\nvalidateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionCharArrayArray",
+            "test_body": "public void testReflectionCharArrayArray() {\nchar[][] array = new char[][] { { 'A', 'B' }, null, { 'p' } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{A,B},<null>,{p}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionhortArrayArray",
+            "test_body": "public void testReflectionhortArrayArray() {\nshort[][] array = new short[][] { { 1, 2 }, null, { 5 } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1,2},<null>,{5}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionLongArrayArray",
+            "test_body": "public void testReflectionLongArrayArray() {\nlong[][] array = new long[][] { { 1, 2 }, null, { 5 } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1,2},<null>,{5}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionFloatArrayArray",
+            "test_body": "public void testReflectionFloatArrayArray() {\nfloat[][] array = new float[][] { { 1.0f, 2.29686f }, null, { Float.NaN } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1.0,2.29686},<null>,{NaN}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionArrayCycle",
+            "test_body": "public void testReflectionArrayCycle() throws Exception {\nObject[] objects = new Object[1];\nobjects[0] = objects;\nassertEquals(\nthis.toBaseString(objects) + \"[{\" + this.toBaseString(objects) + \"}]\",\nToStringBuilder.reflectionToString(objects));\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionBooleanArrayArray",
+            "test_body": "public void testReflectionBooleanArrayArray() {\nboolean[][] array = new boolean[][] { { true, false }, null, { false } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{true,false},<null>,{false}}]\", ToStringBuilder.reflectionToString(array));\nassertEquals(baseStr + \"[{{true,false},<null>,{false}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionArrayArrayCycle",
+            "test_body": "public void testReflectionArrayArrayCycle() throws Exception {\nObject[][] objects = new Object[2][2];\nobjects[0][0] = objects;\nobjects[0][1] = objects;\nobjects[1][0] = objects;\nobjects[1][1] = objects;\nString basicToString = this.toBaseString(objects);\nassertEquals(\nbasicToString\n+ \"[{{\"\n+ basicToString\n+ \",\"\n+ basicToString\n+ \"},{\"\n+ basicToString\n+ \",\"\n+ basicToString\n+ \"}}]\",\nToStringBuilder.reflectionToString(objects));\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionByteArrayArray",
+            "test_body": "public void testReflectionByteArrayArray() {\nbyte[][] array = new byte[][] { { 1, 2 }, null, { 5 } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1,2},<null>,{5}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testSimpleReflectionObjectCycle",
+            "test_body": "public void testSimpleReflectionObjectCycle() throws Exception {\nSimpleReflectionTestFixture simple = new SimpleReflectionTestFixture();\nsimple.o = simple;\nassertEquals(this.toBaseString(simple) + \"[o=\" + this.toBaseString(simple) + \"]\", simple.toString());\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionDoubleArrayArray",
+            "test_body": "public void testReflectionDoubleArrayArray() {\ndouble[][] array = new double[][] { { 1.0, 2.29686 }, null, { Double.NaN } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1.0,2.29686},<null>,{NaN}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionArrayCycleLevel2",
+            "test_body": "public void testReflectionArrayCycleLevel2() throws Exception {\nObject[] objects = new Object[1];\nObject[] objectsLevel2 = new Object[1];\nobjects[0] = objectsLevel2;\nobjectsLevel2[0] = objects;\nassertEquals(\nthis.toBaseString(objects) + \"[{{\" + this.toBaseString(objects) + \"}}]\",\nToStringBuilder.reflectionToString(objects));\nassertEquals(\nthis.toBaseString(objectsLevel2) + \"[{{\" + this.toBaseString(objectsLevel2) + \"}}]\",\nToStringBuilder.reflectionToString(objectsLevel2));\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testReflectionIntArrayArray",
+            "test_body": "public void testReflectionIntArrayArray() {\nint[][] array = new int[][] { { 1, 2 }, null, { 5 } };\nString baseStr = this.toBaseString(array);\nassertEquals(baseStr + \"[{{1,2},<null>,{5}}]\", ToStringBuilder.reflectionToString(array));\narray = null;\nassertReflectionArray(\"<null>\", array);\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        },
+        {
+            "test_name": "testSelfInstanceVarReflectionObjectCycle",
+            "test_body": "public void testSelfInstanceVarReflectionObjectCycle() throws Exception {\nSelfInstanceVarReflectionTestFixture test = new SelfInstanceVarReflectionTestFixture();\nassertEquals(this.toBaseString(test) + \"[typeIsSelf=\" + this.toBaseString(test) + \"]\", test.toString());\nthis.validateNullToStringStyleRegistry();\n}\n",
+            "stack_trace": "at junit.framework.Assert.fail(Assert.java:57)"
+        }
+    ],
+    "methods": [
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, Object value) {buffer.append(value);}",
+            "suspicious_rank": 0.322,
+            "covered_by_tests": [
+                "testReflectionShortArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionFloatArray",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionDoubleArray",
+                "testReflectionCharArray",
+                "testReflectionObjectArray",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public Class<?> getUpToClass() {return this.upToClass;}",
+            "suspicious_rank": 0.754,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public ReflectionToStringBuilder reflectionAppendArray(Object array) {this.getStyle().reflectionAppendArrayDetail(this.getStringBuffer(), null, array);return this;}",
+            "suspicious_rank": 0.882,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionBooleanArray",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testReflectionyteArray",
+                "testReflectionLongArray"
+            ]
+        },
+        {
+            "method_body": "protected void removeLastFieldSeparator(StringBuffer buffer) {int len = buffer.length();int sepLen = fieldSeparator.length();if (len > 0 && sepLen > 0 && len >= sepLen) {boolean match = true;for (int i = 0; i < sepLen; i++) {if (buffer.charAt(len - 1 - i) != fieldSeparator.charAt(sepLen - 1 - i)) {match = false;break;if (match) {buffer.setLength(len - sepLen);}",
+            "suspicious_rank": 0.451,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "static boolean isRegistered(Object value) {Map<Object, Object> m = getRegistry();return m.containsKey(value);}",
+            "suspicious_rank": 0.493,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendFieldsIn(Class<?> clazz) {if (clazz.isArray()) {this.reflectionAppendArray(this.getObject());return;Field[] fields = clazz.getDeclaredFields();AccessibleObject.setAccessible(fields, true);for (Field field : fields) {String fieldName = field.getName();if (this.accept(field)) {Object fieldValue = this.getValue(field);this.append(fieldName, fieldValue);}}",
+            "suspicious_rank": 0.754,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public void appendStart(StringBuffer buffer, Object object) {if (object != null) {appendClassName(buffer, object);appendIdentityHashCode(buffer, object);appendContentStart(buffer);if (fieldSeparatorAtStart) {}",
+            "suspicious_rank": 0.442,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void reflectionAppendArrayDetail(StringBuffer buffer, String fieldName, Object array) {buffer.append(arrayStart);int length = Array.getLength(array);for (int i = 0; i < length; i++) {Object item = Array.get(array, i);if (i > 0) {buffer.append(arraySeparator);if (item == null) {appendNullText(buffer, fieldName);appendInternal(buffer, fieldName, item, arrayContentDetail);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.882,
+            "covered_by_tests": [
+                "testReflectionShortArray",
+                "testReflectionBooleanArrayArray",
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionIntArray",
+                "testReflectionFloatArray",
+                "testReflectionBooleanArray",
+                "testReflectionDoubleArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testReflectionObjectArray",
+                "testReflectionyteArray",
+                "testReflectionLongArray"
+            ]
+        },
+        {
+            "method_body": "private boolean appendStatics = false;private boolean appendTransients = false;private Class<?> upToClass = null;}",
+            "suspicious_rank": 0.858,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static <T> String toString(return new ReflectionToStringBuilder(object, style, null, reflectUpToClass, outputTransients, outputStatics)}",
+            "suspicious_rank": 0.858,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public StringBuffer getStringBuffer() {return buffer;}",
+            "suspicious_rank": 0.447,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendClassName(StringBuffer buffer, Object object) {if (useClassName && object != null) {register(object);if (useShortClassName) {buffer.append(object.getClass().getName());}",
+            "suspicious_rank": 0.446,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public void appendEnd(StringBuffer buffer, Object object) {if (this.fieldSeparatorAtEnd == false) {removeLastFieldSeparator(buffer);appendContentEnd(buffer);unregister(object);}",
+            "suspicious_rank": 0.451,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendContentStart(StringBuffer buffer) {buffer.append(contentStart);}",
+            "suspicious_rank": 0.446,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "static void register(Object value) {if (value != null) {synchronized (ToStringStyle.class) {m = REGISTRY.get();if (m == null) {m = new WeakHashMap<Object, Object>();REGISTRY.set(m);}m.put(value, null);}",
+            "suspicious_rank": 0.449,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public String toString() {if (this.getObject() == null) {style.appendEnd(this.getStringBuffer(), this.getObject());return this.getStringBuffer().toString();}",
+            "suspicious_rank": 0.447,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public ToStringBuilder(Object object, ToStringStyle style, StringBuffer buffer) {if (style == null) {style = getDefaultStyle();if (buffer == null) {buffer = new StringBuffer(512);this.buffer = buffer;this.style = style;this.object = object;style.appendStart(buffer, object);}",
+            "suspicious_rank": 0.442,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static String reflectionToString(Object object) {return ReflectionToStringBuilder.toString(object);}",
+            "suspicious_rank": 0.914,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public Object getObject() {return object;}",
+            "suspicious_rank": 0.442,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendContentEnd(StringBuffer buffer) {buffer.append(contentEnd);}",
+            "suspicious_rank": 0.451,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public void setAppendTransients(boolean appendTransients) {this.appendTransients = appendTransients;}",
+            "suspicious_rank": 0.858,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public void setAppendStatics(boolean appendStatics) {this.appendStatics = appendStatics;}",
+            "suspicious_rank": 0.858,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public String toString() {if (this.getObject() == null) {Class<?> clazz = this.getObject().getClass();this.appendFieldsIn(clazz);while (clazz.getSuperclass() != null && clazz != this.getUpToClass()) {clazz = clazz.getSuperclass();this.appendFieldsIn(clazz);return super.toString();}",
+            "suspicious_rank": 0.746,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public ToStringStyle getStyle() {return style;}",
+            "suspicious_rank": 0.808,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionBooleanArray",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testReflectionyteArray",
+                "testReflectionLongArray"
+            ]
+        },
+        {
+            "method_body": "public void setUpToClass(Class<?> clazz) {if (clazz != null) {Object object = getObject();if (object != null && clazz.isInstance(object) == false) {this.upToClass = clazz;}",
+            "suspicious_rank": 0.834,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected boolean isUseIdentityHashCode() {return useIdentityHashCode;}",
+            "suspicious_rank": 0.446,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "static Map<Object, Object> getRegistry() {return REGISTRY.get() != null ? REGISTRY.get() : Collections.<Object, Object>emptyMap();}",
+            "suspicious_rank": 0.493,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendIdentityHashCode(StringBuffer buffer, Object object) {if (this.isUseIdentityHashCode() && object!=null) {register(object);buffer.append('@');buffer.append(Integer.toHexString(System.identityHashCode(object)));}",
+            "suspicious_rank": 0.446,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "static void unregister(Object value) {if (value != null) {synchronized (ToStringStyle.class) {m = REGISTRY.get();if (m != null) {m.remove(value);if (m.isEmpty()) {REGISTRY.remove();}}",
+            "suspicious_rank": 0.451,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static String toString(Object object) {return toString(object, null, false, false, null);}",
+            "suspicious_rank": 0.899,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static ToStringStyle getDefaultStyle() {return defaultStyle;}",
+            "suspicious_rank": 0.456,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionFloatArray",
+                "testReflectionObjectArray",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionBooleanArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionDoubleArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionShortArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testObjectCycle",
+                "testReflectionIntArray",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionObjectCycle",
+                "testReflectionBooleanArray",
+                "testReflectionArrayArrayCycle",
+                "testReflectionLongArrayArray",
+                "testReflectionCharArray",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionyteArray",
+                "testReflectionLongArray",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public void append(StringBuffer buffer, String fieldName, Object value, Boolean fullDetail) {appendFieldStart(buffer, fieldName);if (value == null) {appendInternal(buffer, fieldName, value, isFullDetail(fullDetail));appendFieldEnd(buffer, fieldName);}",
+            "suspicious_rank": 0.141,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected Object getValue(Field field) throws IllegalArgumentException, IllegalAccessException {return field.get(this.getObject());}",
+            "suspicious_rank": 0.236,
+            "covered_by_tests": [
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static void identityToString(StringBuffer buffer, Object object) {if (object == null) {buffer.append(object.getClass().getName())}",
+            "suspicious_rank": 0.548,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionArrayArrayCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle"
+            ]
+        },
+        {
+            "method_body": "protected void appendCyclicObject(StringBuffer buffer, String fieldName, Object value) {ObjectUtils.identityToString(buffer, value);}",
+            "suspicious_rank": 0.577,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testReflectionArrayArrayCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testReflectionArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle"
+            ]
+        },
+        {
+            "method_body": "protected void appendFieldSeparator(StringBuffer buffer) {buffer.append(fieldSeparator);}",
+            "suspicious_rank": 0.131,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendFieldStart(StringBuffer buffer, String fieldName) {if (useFieldNames && fieldName != null) {buffer.append(fieldName);buffer.append(fieldNameValueSeparator);}",
+            "suspicious_rank": 0.131,
+            "covered_by_tests": [
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendFieldEnd(StringBuffer buffer, String fieldName) {appendFieldSeparator(buffer);}",
+            "suspicious_rank": 0.131,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public ToStringBuilder append(String fieldName, Object obj) {style.append(buffer, fieldName, obj, null);return this;}",
+            "suspicious_rank": 0.17,
+            "covered_by_tests": [
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected boolean isFullDetail(Boolean fullDetailRequest) {if (fullDetailRequest == null) {return defaultFullDetail;}",
+            "suspicious_rank": 0.141,
+            "covered_by_tests": [
+                "testObjectCycle",
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected boolean accept(Field field) {if (field.getName().indexOf(ClassUtils.INNER_CLASS_SEPARATOR_CHAR) != -1) {if (Modifier.isTransient(field.getModifiers()) && !this.isAppendTransients()) {return false;if (Modifier.isStatic(field.getModifiers()) && !this.isAppendStatics()) {if (this.excludeFieldNames != nullreturn true;}",
+            "suspicious_rank": 0.236,
+            "covered_by_tests": [
+                "testReflectionObjectCycle",
+                "testSelfInstanceTwoVarsReflectionObjectCycle",
+                "testSelfInstanceVarReflectionObjectCycle",
+                "testSimpleReflectionObjectCycle",
+                "testReflectionArrayAndObjectCycle",
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static <T> String reflectionToString(return ReflectionToStringBuilder.toString(object, style, outputTransients, false, reflectUpToClass);}",
+            "suspicious_rank": 0.192,
+            "covered_by_tests": [
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static String toString(Object object, ToStringStyle style) {return toString(object, style, false, false, null);}",
+            "suspicious_rank": 0.192,
+            "covered_by_tests": [
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public boolean isAppendTransients() {return this.appendTransients;}",
+            "suspicious_rank": 0.136,
+            "covered_by_tests": [
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static String reflectionToString(Object object, ToStringStyle style, boolean outputTransients) {return ReflectionToStringBuilder.toString(object, style, outputTransients, false, null);}",
+            "suspicious_rank": 0.192,
+            "covered_by_tests": [
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "public static String reflectionToString(Object object, ToStringStyle style) {return ReflectionToStringBuilder.toString(object, style);}",
+            "suspicious_rank": 0.192,
+            "covered_by_tests": [
+                "testReflectionHierarchy"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, int[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.116,
+            "covered_by_tests": [
+                "testReflectionIntArrayArray",
+                "testReflectionObjectArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendNullText(StringBuffer buffer, String fieldName) {buffer.append(nullText);}",
+            "suspicious_rank": 0.238,
+            "covered_by_tests": [
+                "testReflectionBooleanArrayArray",
+                "testReflectionhortArrayArray",
+                "testReflectionCharArrayArray",
+                "testReflectionByteArrayArray",
+                "testReflectionDoubleArrayArray",
+                "testReflectionIntArrayArray",
+                "testReflectionFloatArrayArray",
+                "testReflectionLongArrayArray",
+                "testReflectionObjectArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, int value) {buffer.append(value);}",
+            "suspicious_rank": 0.091,
+            "covered_by_tests": [
+                "testReflectionIntArrayArray",
+                "testReflectionObjectArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, Object[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {Object item = array[i];if (i > 0) {buffer.append(arraySeparator);if (item == null) {appendInternal(buffer, fieldName, item, arrayContentDetail);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.091,
+            "covered_by_tests": [
+                "testReflectionArrayArrayCycle",
+                "testReflectionArrayCycleLevel2",
+                "testReflectionArrayAndObjectCycle"
+            ]
+        },
+        {
+            "method_body": "public ToStringBuilder append(Object obj) {style.append(buffer, null, obj, null);return this;}",
+            "suspicious_rank": 0.027,
+            "covered_by_tests": [
+                "testObjectCycle"
+            ]
+        },
+        {
+            "method_body": "public ToStringBuilder(Object object) {this(object, null, null);}",
+            "suspicious_rank": 0.02,
+            "covered_by_tests": [
+                "testObjectCycle"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, char value) {buffer.append(value);}",
+            "suspicious_rank": 0.096,
+            "covered_by_tests": [
+                "testReflectionCharArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, char[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionCharArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, short value) {buffer.append(value);}",
+            "suspicious_rank": 0.096,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, short[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionhortArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, long[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.05,
+            "covered_by_tests": [
+                "testReflectionLongArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, long value) {buffer.append(value);}",
+            "suspicious_rank": 0.041,
+            "covered_by_tests": [
+                "testReflectionLongArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, float[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionFloatArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, float value) {buffer.append(value);}",
+            "suspicious_rank": 0.096,
+            "covered_by_tests": [
+                "testReflectionFloatArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, boolean[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionBooleanArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendInternal(StringBuffer buffer, String fieldName, Object value, boolean detail) {if (isRegistered(value)appendCyclicObject(buffer, fieldName, value);return;register(value);if (value instanceof Collection<?>) {} else if (value instanceof Map<?, ?>) {} else if (value instanceof long[]) {if (detail) {appendDetail(buffer, fieldName, (long[]) value);} else if (value instanceof int[]) {if (detail) {appendDetail(buffer, fieldName, (int[]) value);} else if (value instanceof short[]) {if (detail) {appendDetail(buffer, fieldName, (short[]) value);} else if (value instanceof byte[]) {if (detail) {appendDetail(buffer, fieldName, (byte[]) value);} else if (value instanceof char[]) {if (detail) {appendDetail(buffer, fieldName, (char[]) value);} else if (value instanceof double[]) {if (detail) {appendDetail(buffer, fieldName, (double[]) value);} else if (value instanceof float[]) {if (detail) {appendDetail(buffer, fieldName, (float[]) value);} else if (value instanceof boolean[]) {if (detail) {appendDetail(buffer, fieldName, (boolean[]) value);} else if (value.getClass().isArray()) {if (detail) {appendDetail(buffer, fieldName, (Object[]) value);if (detail) {appendDetail(buffer, fieldName, value);unregister(value);}}",
+            "suspicious_rank": 0.493,
+            "covered_by_tests": [
+                "testReflectionBooleanArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, boolean value) {buffer.append(value);}",
+            "suspicious_rank": 0.061,
+            "covered_by_tests": [
+                "testReflectionBooleanArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, byte[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionByteArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, byte value) {buffer.append(value);}",
+            "suspicious_rank": 0.096,
+            "covered_by_tests": [
+                "testReflectionByteArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, double[] array) {buffer.append(arrayStart);for (int i = 0; i < array.length; i++) {if (i > 0) {buffer.append(arraySeparator);appendDetail(buffer, fieldName, array[i]);buffer.append(arrayEnd);}",
+            "suspicious_rank": 0.111,
+            "covered_by_tests": [
+                "testReflectionDoubleArrayArray"
+            ]
+        },
+        {
+            "method_body": "protected void appendDetail(StringBuffer buffer, String fieldName, double value) {buffer.append(value);}",
+            "suspicious_rank": 0.096,
+            "covered_by_tests": [
+                "testReflectionDoubleArrayArray"
+            ]
+        }
+    ]
+}
